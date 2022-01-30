@@ -14,7 +14,7 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-id-badge"></i></div>
                         Profile
                     </a>
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('users.index') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                         Pengguna
                     </a>

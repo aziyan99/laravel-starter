@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +26,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/dashboard', function () {
         return view('backend.dashboard.index');
     });
+
+    Route::resource('users', UserController::class);
 });
