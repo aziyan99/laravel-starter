@@ -15,9 +15,10 @@
     <body class="sb-nav-fixed">
         @include('layouts.partials.backend._topbar')
         @include('layouts.partials.backend._sidebar')
-        <h1 class="mt-4">@yield('title')</h1>
+        <h1 class="mt-4">@yield('page')</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item">Dashboard</li>
+            <li class="breadcrumb-item active">@yield('page')</li>
         </ol>
         @yield('main')
         @include('layouts.partials.backend._footer')
