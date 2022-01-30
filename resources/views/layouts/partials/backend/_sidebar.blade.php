@@ -10,11 +10,15 @@
                     </a>
                     <div class="sb-sidenav-menu-heading">Menu utama</div>
                     <div class="sb-sidenav-menu-heading">Menu sistem</div>
-                    <a class="nav-link" href="charts.html">
+                    <a class="nav-link" href=#">
+                        <div class="sb-nav-link-icon"><i class="fas fa-id-badge"></i></div>
+                        Profile
+                    </a>
+                    <a class="nav-link" href="#">
                         <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                         Pengguna
                     </a>
-                    <a class="nav-link" href="tables.html">
+                    <a class="nav-link" href=#">
                         <div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
                         Pengaturan
                     </a>
