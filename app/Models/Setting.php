@@ -20,12 +20,12 @@ class Setting extends Model
         'twitter'
     ];
 
-    public function getLogoAttribute($value)
+    public function getLogoPathAttribute()
     {
-        if ($value == null) {
+        if ($this->logo == null) {
             return "https://ui-avatars.com/api/?size=128&name=" . $this->name;
         } else {
-            return $value;
+            return "http://localhost:8000/storage/" . $this->logo;
         }
     }
 }
