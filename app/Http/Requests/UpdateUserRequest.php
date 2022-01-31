@@ -14,7 +14,7 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' => Rule::unique('users')->ignore($this->request->id),
+            'email' => Rule::unique('users')->ignore($this->user),
             'address' => 'required|string',
             'role' => 'required',
             'phone_number' => 'required'
