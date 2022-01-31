@@ -25,7 +25,7 @@ class UserController extends Controller
             return DataTables::of($users)
                 ->addColumn('avatar', function ($user) {
                     return '
-                            <img src="' . $user->avatar . '" alt="avatar" width="64" class="rounded-circle">
+                            <img src="' . $user->avatar_path . '" alt="avatar" width="64" class="rounded-circle">
                         ';
                 })
                 ->addColumn('name', function ($user) {

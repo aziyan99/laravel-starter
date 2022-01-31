@@ -46,12 +46,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getAvatarAttribute($value)
+    public function getAvatarPathAttribute()
     {
-        if ($value == null) {
+        if ($this->avatar == null) {
             return "https://ui-avatars.com/api/?size=128&name=" . $this->name;
         } else {
-            return $value;
+            return $this->avatar;
         }
     }
 }
