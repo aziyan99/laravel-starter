@@ -20,6 +20,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        adminOnly();
         if ($request->ajax()) {
             $users = User::latest()->get();
             return DataTables::of($users)
@@ -68,6 +69,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        adminOnly();
         return view('backend.users.create', ['user' => new User()]);
     }
 
@@ -79,6 +81,7 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
+        adminOnly();
         User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -100,6 +103,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        adminOnly();
         return view('backend.users.show', ['user' => $user]);
     }
 
@@ -111,6 +115,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        adminOnly();
         return view('backend.users.edit', ['user' => $user]);
     }
 
@@ -123,6 +128,7 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
+        adminOnly();
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
@@ -141,6 +147,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        adminOnly();
         if (Storage::exists($user->avatar)) {
             Storage::delete($user->avatar);
         }

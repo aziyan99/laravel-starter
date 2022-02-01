@@ -13,6 +13,7 @@ class SettingController extends Controller
 {
     public function index()
     {
+        adminOnly();
         return view('backend.settings.index', [
             'setting' => Setting::first(),
         ]);
@@ -20,13 +21,14 @@ class SettingController extends Controller
 
     public function update(UpdateSettingRequest $request, Setting $setting)
     {
+        adminOnly();
         $setting->update($request->only('name', 'phone_number', 'address', 'email', 'facebook', 'instagram', 'twitter'));
         return redirect()->route('setting.index');
     }
 
     public function updateLogo(Request $request, Setting $setting)
     {
-        // dd(storage_path());
+        adminOnly();
         $request->validate([
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
