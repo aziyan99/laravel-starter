@@ -85,6 +85,7 @@ class UserController extends Controller
             'password' => Hash::make($request->email),
             'phone_number' => $request->phone_number,
             'address' => $request->address,
+            'role' => $request->role,
             'avatar' => null,
         ]);
 
@@ -126,6 +127,7 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
+            'role' => $request->role,
             'address' => $request->address,
         ]);
         return redirect()->route('users.index');

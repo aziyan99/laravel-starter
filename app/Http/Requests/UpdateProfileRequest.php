@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class UpdateSettingRequest extends FormRequest
+class UpdateProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,12 +26,8 @@ class UpdateSettingRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' => 'required|email',
-            'phone_number' => 'required',
             'address' => 'required|string',
-            'twitter' => 'required|string',
-            'instagram' => 'required|string',
-            'facebook' => 'required|string',
+            'phone_number' => 'required'
         ];
     }
 }

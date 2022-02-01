@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::put('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update.information');
+    Route::put('/profile/avatar/{user}', [ProfileController::class, 'updateAvatar'])->name('profile.update.avatar');
+    Route::put('/profile/password/{user}', [ProfileController::class, 'updatePassword'])->name('profile.update.password');
 
     Route::resource('users', UserController::class);
     Route::get('setting', [SettingController::class, 'index'])->name('setting.index');

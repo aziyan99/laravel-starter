@@ -10,8 +10,8 @@
                     </a>
                     <div class="sb-sidenav-menu-heading">Menu utama</div>
                     <div class="sb-sidenav-menu-heading">Menu sistem</div>
-                    <a class="nav-link" href=#">
-                        <div class="sb-nav-link-icon"><i class="fas fa-id-badge"></i></div>
+                    <a class="nav-link" href="{{ route('profile.index') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                         Profile
                     </a>
                     <a class="nav-link" href="{{ route('users.index') }}">
