@@ -51,7 +51,7 @@ class User extends Authenticatable
         if ($this->avatar == null) {
             return "https://ui-avatars.com/api/?size=128&name=" . $this->name;
         } else {
-            return $this->avatar;
+            return "http://localhost:8000/storage/" . $this->avatar;
         }
     }
 }
