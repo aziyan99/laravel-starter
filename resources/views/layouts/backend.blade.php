@@ -8,6 +8,14 @@
         <title>@yield('title')</title>
         <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" />
         <x-favico />
+        <!-- Fonts -->
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <style>
+            *{
+                font-family: 'Nunito' !important;
+            }
+        </style>
         @stack('styles')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous">
         </script>

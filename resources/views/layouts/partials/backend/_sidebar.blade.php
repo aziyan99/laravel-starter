@@ -8,6 +8,10 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Dashboard
                     </a>
+                    <a class="nav-link" href="{{ route('home') }}" target="_blank">
+                        <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
+                        Halaman utama
+                    </a>
                     <div class="sb-sidenav-menu-heading">Menu utama</div>
                     <div class="sb-sidenav-menu-heading">Menu sistem</div>
                     <a class="nav-link" href="{{ route('profile.index') }}">
