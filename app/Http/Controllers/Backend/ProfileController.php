@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Storage;
+use Flasher\Prime\FlasherInterface;
 
 class ProfileController extends Controller
 {
@@ -17,17 +18,18 @@ class ProfileController extends Controller
         return view('backend.profile.index', ['user' => auth()->user()]);
     }
 
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(UpdateUserRequest $request, User $user, FlasherInterface $flasherInterface)
     {
         $user->update([
             'name' => $request->name,
             'phone_number' => $request->phone_number,
             'address' => $request->address,
         ]);
+        $flasherInterface->addSuccess('Data berhasil disimpan');
         return redirect()->route('users.index');
     }
 
-    public function updateAvatar(Request $request, User $user)
+    public function updateAvatar(Request $request, User $user, FlasherInterface $flasherInterface)
     {
         $request->validate([
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
@@ -49,6 +51,8 @@ class ProfileController extends Controller
         $user->update([
             'avatar' => 'avatar/' . $newFileName
         ]);
+
+        $flasherInterface->addSuccess('Data berhasil disimpan');
 
         return redirect()->route('profile.index');
     }

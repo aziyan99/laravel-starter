@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables;
+use Flasher\Prime\FlasherInterface;
 
 class UserController extends Controller
 {
@@ -79,7 +80,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUserRequest $request)
+    public function store(StoreUserRequest $request, FlasherInterface $flasherInterface)
     {
         adminOnly();
         User::create([
@@ -91,7 +92,7 @@ class UserController extends Controller
             'role' => $request->role,
             'avatar' => null,
         ]);
-
+        $flasherInterface->addSuccess('Pengguna berhasil disimpan');
         return redirect()->route('users.index');
     }
 
@@ -126,7 +127,7 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(UpdateUserRequest $request, User $user, FlasherInterface $flasherInterface)
     {
         adminOnly();
         $user->update([
@@ -136,6 +137,7 @@ class UserController extends Controller
             'role' => $request->role,
             'address' => $request->address,
         ]);
+        $flasherInterface->addSuccess('Pengguna berhasil diubah');
         return redirect()->route('users.index');
     }
 
@@ -145,7 +147,7 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(User $user, FlasherInterface $flasherInterface)
     {
         adminOnly();
         if (Storage::exists($user->avatar)) {
@@ -154,6 +156,7 @@ class UserController extends Controller
 
         $user->delete();
 
+        $flasherInterface->addSuccess('Pengguna berhasil dihapus');
         return redirect()->route('users.index');
     }
 }

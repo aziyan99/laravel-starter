@@ -8,6 +8,7 @@ use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Image;
+use Flasher\Prime\FlasherInterface;
 
 class SettingController extends Controller
 {
@@ -19,14 +20,15 @@ class SettingController extends Controller
         ]);
     }
 
-    public function update(UpdateSettingRequest $request, Setting $setting)
+    public function update(UpdateSettingRequest $request, Setting $setting, FlasherInterface $flasherInterface)
     {
         adminOnly();
         $setting->update($request->only('name', 'phone_number', 'address', 'email', 'facebook', 'instagram', 'twitter'));
+        $flasherInterface->addSuccess('Data berhasil disimpan');
         return redirect()->route('setting.index');
     }
 
-    public function updateLogo(Request $request, Setting $setting)
+    public function updateLogo(Request $request, Setting $setting, FlasherInterface $flasherInterface)
     {
         adminOnly();
         $request->validate([
@@ -49,6 +51,8 @@ class SettingController extends Controller
         $setting->update([
             'logo' => 'logo/' . $newFileName
         ]);
+
+        $flasherInterface->addSuccess('Data berhasil disimpan');
 
         return redirect()->route('setting.index');
     }
